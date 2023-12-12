@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccikenpwrb7m1"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_8qci4"]
+[ext_resource type="FontFile" uid="uid://c6wct0f8e0f6j" path="res://assets/redalert.ttf" id="2_2e00f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fql48"]
+font = ExtResource("2_2e00f")
+
+[sub_resource type="LabelSettings" id="LabelSettings_v7wdn"]
+font = ExtResource("2_2e00f")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8qci4")
+
+[node name="menu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.5
+offset_right = 50.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="menu"]
+layout_mode = 2
+text = "BLOCK BREAKER"
+label_settings = SubResource("LabelSettings_fql48")
+
+[node name="play" type="Button" parent="menu"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_2e00f")
+theme_override_font_sizes/font_size = 11
+text = "PLAY"
+
+[node name="highscore" type="Button" parent="menu"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_2e00f")
+theme_override_font_sizes/font_size = 11
+text = "HIGHSCORE"
+
+[node name="exit" type="Button" parent="menu"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_2e00f")
+theme_override_font_sizes/font_size = 11
+text = "EXIT"
+
+[node name="Scores" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="highscore" type="Label" parent="Scores"]
+texture_filter = 1
+layout_mode = 2
+text = "highscore: 0"
+label_settings = SubResource("LabelSettings_v7wdn")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="menu/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="menu/highscore" to="." method="_on_highscore_pressed"]
+[connection signal="pressed" from="menu/exit" to="." method="_on_exit_pressed"]
+[connection signal="gui_input" from="Scores" to="." method="_on_scores_gui_input"]

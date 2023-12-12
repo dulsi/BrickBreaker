@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cj3j8i81tauji"]
+
+[ext_resource type="Script" path="res://objects/Player.gd" id="1_j51xh"]
+[ext_resource type="Texture2D" uid="uid://btajht08oq5eo" path="res://assets/sprites.png" id="2_yjadp"]
+[ext_resource type="Texture2D" uid="uid://ca5ukqtu2ltdy" path="res://levels/upgrade_sprites.png" id="3_j5wi6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2gb1"]
+size = Vector2(35, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au5wu"]
+atlas = ExtResource("2_yjadp")
+region = Rect2(6, 18, 36, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n2aw"]
+atlas = ExtResource("3_j5wi6")
+region = Rect2(17, 2, 10, 7)
+
+[node name="player" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_j51xh")
+speed = 250
+metadata/_edit_group_ = true
+
+[node name="col" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_j2gb1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+texture_repeat = 1
+position = Vector2(0, 1)
+texture = SubResource("AtlasTexture_au5wu")
+
+[node name="blaster" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(-0.5, -6.25)
+scale = Vector2(0.9, 0.928571)
+texture = SubResource("AtlasTexture_6n2aw")
+
+[node name="BTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="BTimer" to="." method="_on_b_timer_timeout"]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2wkslvoxyd8c"]
+
+[ext_resource type="Script" path="res://Upgrade.gd" id="1_s127p"]
+[ext_resource type="Texture2D" uid="uid://ca5ukqtu2ltdy" path="res://levels/upgrade_sprites.png" id="2_fxv2f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3edb"]
+atlas = ExtResource("2_fxv2f")
+region = Rect2(2, 3, 12, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c67is"]
+atlas = ExtResource("2_fxv2f")
+region = Rect2(2, 11, 12, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omy62"]
+atlas = ExtResource("2_fxv2f")
+region = Rect2(17, 2, 10, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8rsy"]
+atlas = ExtResource("2_fxv2f")
+region = Rect2(17, 12, 8, 9)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hx8j4"]
+radius = 6.0
+
+[node name="Upgrade" type="Area2D"]
+script = ExtResource("1_s127p")
+
+[node name="shrink" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = SubResource("AtlasTexture_m3edb")
+
+[node name="stretch" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = SubResource("AtlasTexture_c67is")
+
+[node name="blaster" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = SubResource("AtlasTexture_omy62")
+
+[node name="multiball" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = SubResource("AtlasTexture_r8rsy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hx8j4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
