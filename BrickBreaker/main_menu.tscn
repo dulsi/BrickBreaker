@@ -44,7 +44,16 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_2e00f")
 theme_override_font_sizes/font_size = 11
-text = "PLAY"
+text = "1 PLAYER"
+
+[node name="play2" type="Button" parent="menu"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_2e00f")
+theme_override_font_sizes/font_size = 11
+text = "2 PLAYER"
 
 [node name="highscore" type="Button" parent="menu"]
 texture_filter = 1
@@ -82,6 +91,7 @@ label_settings = SubResource("LabelSettings_v7wdn")
 horizontal_alignment = 1
 
 [connection signal="pressed" from="menu/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="menu/play2" to="." method="_on_play2_pressed"]
 [connection signal="pressed" from="menu/highscore" to="." method="_on_highscore_pressed"]
 [connection signal="pressed" from="menu/exit" to="." method="_on_exit_pressed"]
 [connection signal="gui_input" from="Scores" to="." method="_on_scores_gui_input"]

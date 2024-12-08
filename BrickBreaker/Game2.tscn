@@ -1,39 +1,45 @@
-[gd_scene load_steps=10 format=3 uid="uid://xni0uaxu0byr"]
+[gd_scene load_steps=10 format=3 uid="uid://c20x2mlv3gexd"]
 
-[ext_resource type="PackedScene" uid="uid://cj3j8i81tauji" path="res://objects/Player.tscn" id="1_m0gq8"]
-[ext_resource type="Texture2D" uid="uid://d0xb2h0c0cudg" path="res://assets/bg.png" id="1_rqjsw"]
-[ext_resource type="PackedScene" uid="uid://ry3wjm2n5my1" path="res://objects/Ball.tscn" id="2_sk50o"]
-[ext_resource type="Script" path="res://LevelManager.gd" id="3_4o5lf"]
-[ext_resource type="Script" path="res://UI.gd" id="4_wxv3f"]
-[ext_resource type="FontFile" uid="uid://c6wct0f8e0f6j" path="res://assets/redalert.ttf" id="6_j6neu"]
+[ext_resource type="Texture2D" uid="uid://d0xb2h0c0cudg" path="res://assets/bg.png" id="1_hj8hi"]
+[ext_resource type="PackedScene" uid="uid://ry3wjm2n5my1" path="res://objects/Ball.tscn" id="2_xa3ft"]
+[ext_resource type="PackedScene" uid="uid://cj3j8i81tauji" path="res://objects/Player.tscn" id="3_0vy6y"]
+[ext_resource type="Script" path="res://LevelManager.gd" id="4_x4cuu"]
+[ext_resource type="Script" path="res://UI.gd" id="5_10pee"]
+[ext_resource type="FontFile" uid="uid://c6wct0f8e0f6j" path="res://assets/redalert.ttf" id="6_5opu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8ok2"]
 size = Vector2(10, 159)
 
 [sub_resource type="LabelSettings" id="LabelSettings_umfeg"]
-font = ExtResource("6_j6neu")
+font = ExtResource("6_5opu0")
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_oc8rj"]
-font = ExtResource("6_j6neu")
+font = ExtResource("6_5opu0")
 
 [node name="Game" type="Node2D"]
 
 [node name="bg" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_rqjsw")
+texture = ExtResource("1_hj8hi")
 centered = false
 
 [node name="cam" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="Ball" parent="." instance=ExtResource("2_sk50o")]
+[node name="Ball" parent="." instance=ExtResource("2_xa3ft")]
 position = Vector2(76, 109)
 collision_mask = 5
 
-[node name="player" parent="." instance=ExtResource("1_m0gq8")]
+[node name="player" parent="." instance=ExtResource("3_0vy6y")]
 position = Vector2(77, 134)
+
+[node name="player2" parent="." instance=ExtResource("3_0vy6y")]
+position = Vector2(77, 134)
+LEFT = "left2"
+RIGHT = "right2"
+FIRE = "fire2"
 
 [node name="Bounds" type="StaticBody2D" parent="." groups=["walls"]]
 collision_mask = 3
@@ -58,11 +64,11 @@ shape = SubResource("RectangleShape2D_k8ok2")
 
 [node name="LevelManager" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("3_4o5lf")
+script = ExtResource("4_x4cuu")
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
-script = ExtResource("4_wxv3f")
+script = ExtResource("5_10pee")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
 anchors_preset = 10
@@ -128,7 +134,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("6_j6neu")
+theme_override_fonts/font = ExtResource("6_5opu0")
 theme_override_font_sizes/font_size = 11
 text = "RESUME"
 
@@ -137,7 +143,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("6_j6neu")
+theme_override_fonts/font = ExtResource("6_5opu0")
 theme_override_font_sizes/font_size = 11
 text = "EXIT"
 
@@ -161,7 +167,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("6_j6neu")
+theme_override_fonts/font = ExtResource("6_5opu0")
 theme_override_font_sizes/font_size = 11
 text = "RESUME"
 
@@ -170,7 +176,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("6_j6neu")
+theme_override_fonts/font = ExtResource("6_5opu0")
 theme_override_font_sizes/font_size = 11
 text = "EXIT"
 

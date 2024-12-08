@@ -49,6 +49,3 @@ func load_level(level_path):
 				add_child(b)
 				b.set_color(pix)
 				b.global_position = Vector2(offsetX+x,offsetY+y)
-
-
-

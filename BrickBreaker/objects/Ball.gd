@@ -60,4 +60,3 @@ func check_for_blocks():
 	var colobj = col.get_collider()
 	if colobj is Block:
 		colobj.take_damage()
-

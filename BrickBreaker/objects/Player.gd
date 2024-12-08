@@ -13,6 +13,9 @@ var projectile = preload("res://objects/projectile.tscn")
 
 @export var MIN_X = 16
 @export var MAX_X = 144
+@export var LEFT = "left"
+@export var RIGHT = "right"
+@export var FIRE = "fire"
 
 static var life = 3
 static var score = 0
@@ -26,7 +29,7 @@ func _ready():
 	shape.size.x = 34
 
 func _process(delta):
-	var dir = Input.get_axis("left","right")
+	var dir = Input.get_axis(LEFT,RIGHT)
 	velocity.x = dir * speed
 	position.x += roundi(velocity.x*delta)
 	position.x = clamp(position.x,MIN_X+size_offset,MAX_X-size_offset)
@@ -34,7 +37,7 @@ func _process(delta):
 		reset()
 		get_tree().reload_current_scene()
 		
-	if Input.is_action_just_pressed("fire"):
+	if Input.is_action_just_pressed(FIRE):
 		if has_blaster:
 			var p = projectile.instantiate()
 			get_parent().add_child(p)

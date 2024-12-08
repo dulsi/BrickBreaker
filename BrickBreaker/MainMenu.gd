@@ -12,10 +12,13 @@ func _on_scores_gui_input(event):
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://Game.tscn")
 
+func _on_play2_pressed():
+	get_tree().change_scene_to_file("res://Game2.tscn")
+
 func _on_highscore_pressed():
 	$menu.hide()
 	$Scores.show()
 
 
 func _on_exit_pressed():
-	pass # Replace with function body.
+	get_tree().quit()
